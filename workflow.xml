@@ -1,0 +1,93 @@
+<workflow-app name="airline-analysis" xmlns="uri:oozie:workflow:0.5">
+    <start to="job1"/>
+
+    <!-- Job 1: On-time Performance -->
+    <action name="job1">
+        <map-reduce>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.input.dir</name>
+                    <value>${inputDir}</value>
+                </property>
+                <property>
+                    <name>mapred.output.dir</name>
+                    <value>${outputDir}/job1</value>
+                </property>
+                <property>
+                    <name>mapred.mapper.class</name>
+                    <value>com.airline.mapper.OnTimeMapper</value>
+                </property>
+                <property>
+                    <name>mapred.reducer.class</name>
+                    <value>com.airline.reducer.OnTimeReducer</value>
+                </property>
+            </configuration>
+        </map-reduce>
+        <ok to="job2"/>
+        <error to="fail"/>
+    </action>
+
+    <!-- Job 2: Taxi Time Analysis -->
+    <action name="job2">
+        <map-reduce>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.input.dir</name>
+                    <value>${outputDir}/job1</value>
+                </property>
+                <property>
+                    <name>mapred.output.dir</name>
+                    <value>${outputDir}/job2</value>
+                </property>
+                <property>
+                    <name>mapred.mapper.class</name>
+                    <value>com.airline.mapper.TaxiMapper</value>
+                </property>
+                <property>
+                    <name>mapred.reducer.class</name>
+                    <value>com.airline.reducer.TaxiReducer</value>
+                </property>
+            </configuration>
+        </map-reduce>
+        <ok to="job3"/>
+        <error to="fail"/>
+    </action>
+
+    <!-- Job 3: Cancellation Reasons -->
+    <action name="job3">
+        <map-reduce>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.input.dir</name>
+                    <value>${outputDir}/job2</value>
+                </property>
+                <property>
+                    <name>mapred.output.dir</name>
+                    <value>${outputDir}/job3</value>
+                </property>
+                <property>
+                    <name>mapred.mapper.class</name>
+                    <value>com.airline.mapper.CancelMapper</value>
+                </property>
+                <property>
+                    <name>mapred.reducer.class</name>
+                    <value>com.airline.reducer.CancelReducer</value>
+                </property>
+            </configuration>
+        </map-reduce>
+        <ok to="end"/>
+        <error to="fail"/>
+    </action>
+
+    <kill name="fail">
+        <message>Job failed: error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+
+    <end name="end"/>
+</workflow-app>
