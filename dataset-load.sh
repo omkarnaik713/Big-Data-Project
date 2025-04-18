@@ -49,7 +49,7 @@ echo "===> Creating working directory: $WORKDIR"
 mkdir -p "$WORKDIR"
 
 echo "===> Creating HDFS directory: /user/airline_data"
-hdfs dfs -mkdir -p /user/airline_data
+sudo -u hdfs hdfs dfs -mkdir -p /user/airline_data
 
 # Download and upload loop
 for year in $(seq 1987 2008); do
@@ -77,7 +77,7 @@ for year in $(seq 1987 2008); do
   fi
 
   echo "Uploading $CSV_NAME to HDFS..."
-  hdfs dfs -put -f "$WORKDIR/$CSV_NAME" /user/airline_data/
+  sudo -u hdfs hdfs dfs -put -f "$WORKDIR/$CSV_NAME" /user/airline_data/
 
 done
 
