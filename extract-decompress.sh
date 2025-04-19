@@ -27,7 +27,7 @@ cd "$DEST_DIR"
 for file in *.bz2; do
   if [[ -f "$file" ]]; then
     echo "Decompressing $file..."
-    bzip2 -dk "$file"  # -d: decompress, -k: keep original .bz2
+    bzip2 -d "$file"  # -d: decompress, -k: keep original .bz2
   fi
 done
 
