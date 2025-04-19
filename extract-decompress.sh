@@ -3,7 +3,7 @@
 set -e
 
 ZIP_FILE="/home/ec2-user/dataverse_files.zip"
-DEST_DIR="/home/ec2-user/airline_csvs"
+DEST_DIR="/tmp/airline_csvs"
 
 echo "===> Checking for required tools..."
 REQUIRED_TOOLS=("unzip" "bzip2")

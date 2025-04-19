@@ -4,7 +4,7 @@ set -e
 
 echo "===> Checking for required tools..."
 
-REQUIRED_TOOLS=("curl" "hdfs" "unzip" "bzip2")
+REQUIRED_TOOLS=("curl" "hdfs")
 
 for tool in "${REQUIRED_TOOLS[@]}"; do
   if ! command -v "$tool" &> /dev/null; then
@@ -18,7 +18,7 @@ echo "✅ All required tools are available."
 echo "===> Extracting and decompressing dataset"
 bash /home/ec2-user/Big-Data-Project/extract-decompress.sh
 
-EXTRACT_DIR="/home/ec2-user/airline_csvs"
+EXTRACT_DIR="/tmp/airline_csvs"
 
 echo "===> Creating HDFS directory: /user/airline_data"
 sudo -u hdfs hdfs dfs -mkdir -p /user/airline_data
@@ -27,7 +27,7 @@ echo "===> Uploading CSV files to HDFS..."
 for csv_file in "$EXTRACT_DIR"/*.csv; do
   if [[ -f "$csv_file" ]]; then
     echo "Uploading $(basename "$csv_file") to HDFS..."
-    sudo -u hdfs hdfs dfs -put -f "$csv_file" /user/airline_data/
+    sudo -u hdfs hdfs dfs -put -f $csv_file /user/airline_data/
   fi
 done
 
