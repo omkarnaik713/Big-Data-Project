@@ -16,7 +16,7 @@ done
 echo "✅ All required tools are available."
 
 echo "===> Extracting and decompressing dataset"
-.//home/ec2-user/Big-Data-Project/extract-decompress.sh
+bash /home/ec2-user/Big-Data-Project/extract-decompress.sh
 
 EXTRACT_DIR="/home/ec2-user/airline_csvs"
 
