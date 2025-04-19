@@ -34,4 +34,4 @@ done
 echo -e "\n===> Cleaning up local files..."
 rm -rf "$EXTRACT_DIR"
 
-echo -e "\n✅ All CSV files successfully uploaded to HDFS at /user/airline_data."
+echo -e "\n✅ All CSV files successfully uploaded to HDFS at /user/airline_data"

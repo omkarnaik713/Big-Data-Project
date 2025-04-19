@@ -34,4 +34,4 @@ done
 echo "===> Cleanup: removing .bz2 files..."
 rm -f *.bz2
 
-echo "✅ All .bz2 files extracted and decompressed to .csv in '$DEST_DIR'."
+echo "✅ All .bz2 files extracted and decompressed to .csv in '$DEST_DIR'"
