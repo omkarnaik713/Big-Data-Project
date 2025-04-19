@@ -1,15 +1,15 @@
-<coordinator-app name="yearly-analysis" frequency="${coord:days(1)}" start="${startTime}" end="${endTime}" timezone="UTC" xmlns="uri:oozie:coordinator:0.2">
+<coordinator-app name="Airline Analysis" timezone="America/New_York" xmlns="uri:oozie:coordinator:0.2">
     <action>
         <workflow>
             <app-path>${workflowAppUri}</app-path>
             <configuration>
                 <property>
                     <name>inputDir</name>
-                    <value>${dataRoot}/${yearRange}</value>
+                    <value>${inputDir}</value>
                 </property>
                 <property>
                     <name>outputDir</name>
-                    <value>${outputRoot}/${yearRange}</value>
+                    <value>${outputDir}</value>
                 </property>
             </configuration>
         </workflow>
