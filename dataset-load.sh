@@ -16,9 +16,9 @@ done
 echo "✅ All required tools are available."
 
 echo "===> Extracting and decompressing dataset"
-./extract-decompress.sh
+./home/ec2-user/Big-Data-Project/extract-decompress.sh
 
-EXTRACT_DIR="airline_csvs"
+EXTRACT_DIR="/home/ec2-user/airline_csvs"
 
 echo "===> Creating HDFS directory: /user/airline_data"
 sudo -u hdfs hdfs dfs -mkdir -p /user/airline_data
