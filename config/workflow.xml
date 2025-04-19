@@ -1,4 +1,4 @@
-<workflow-app name="airline-analysis" xmlns="uri:oozie:workflow:0.5">
+<workflow-app name="Airline Analysis" xmlns="uri:oozie:workflow:0.5">
     <start to="job1"/>
 
     <!-- Job 1: On-time Performance -->
@@ -17,11 +17,11 @@
                 </property>
                 <property>
                     <name>mapred.mapper.class</name>
-                    <value>com.airline.mapper.OnTimeMapper</value>
+                    <value>python ${dataRoot}/mapred/avg_on_time_mapper.py</value>
                 </property>
                 <property>
                     <name>mapred.reducer.class</name>
-                    <value>com.airline.reducer.OnTimeReducer</value>
+                    <value>python ${dataRoot}/mapred/avg_on_time_reducer.py</value>
                 </property>
             </configuration>
         </map-reduce>
@@ -45,11 +45,11 @@
                 </property>
                 <property>
                     <name>mapred.mapper.class</name>
-                    <value>com.airline.mapper.TaxiMapper</value>
+                    <value>python ${dataRoot}/mapred/avg_taxi_time_mapper.py</value>
                 </property>
                 <property>
                     <name>mapred.reducer.class</name>
-                    <value>com.airline.reducer.TaxiReducer</value>
+                    <value>python ${dataRoot}/mapred/avg_taxi_time_reducer.py</value>
                 </property>
             </configuration>
         </map-reduce>
@@ -73,11 +73,11 @@
                 </property>
                 <property>
                     <name>mapred.mapper.class</name>
-                    <value>com.airline.mapper.CancelMapper</value>
+                    <value>python ${dataRoot}/mapred/reason_cancel_mapper.py</value>
                 </property>
                 <property>
                     <name>mapred.reducer.class</name>
-                    <value>com.airline.reducer.CancelReducer</value>
+                    <value>python ${dataRoot}/mapred/reason_cancel_reducer.py</value>
                 </property>
             </configuration>
         </map-reduce>
