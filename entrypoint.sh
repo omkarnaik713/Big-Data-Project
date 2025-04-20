@@ -40,4 +40,6 @@ for script_file in $SCRIPTS_DIR/*; do
     fi
 done
 
+rm -rf /tmp/config /tmp/mapred
+
 echo "Copy operation complete!"
