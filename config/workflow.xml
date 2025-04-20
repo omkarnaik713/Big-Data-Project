@@ -20,8 +20,8 @@
                     <value>${outputDir}/job1</value>
                 </property>
             </configuration>
-            <file>${dataRoot}/mapred/avg_on_time_mapper.py</file>
-            <file>${dataRoot}/mapred/avg_on_time_reducer.py</file>
+            <file>${dataRoot}/mapred/on_time_mapper.py</file>
+            <file>${dataRoot}/mapred/on_time_reducer.py</file>
         </map-reduce>
         <ok to="job2"/>
         <error to="fail"/>
