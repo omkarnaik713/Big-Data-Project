@@ -3,7 +3,7 @@
 
     <!-- Job 1: On-time Performance -->
     <action name="job1">
-        <map-reduce>
+        <streaming>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -16,20 +16,18 @@
                     <value>${outputDir}/job1</value>
                 </property>
             </configuration>
-            <streaming>
-                <mapper>avg_on_time_mapper.py</mapper>
-                <reducer>avg_on_time_reducer.py</reducer>
-                <file>${dataRoot}/mapred/avg_on_time_mapper.py</file>
-                <file>${dataRoot}/mapred/avg_on_time_reducer.py</file>
-            </streaming>
-        </map-reduce>
+            <mapper>avg_on_time_mapper.py</mapper>
+            <reducer>avg_on_time_reducer.py</reducer>
+            <file>${dataRoot}/mapred/avg_on_time_mapper.py</file>
+            <file>${dataRoot}/mapred/avg_on_time_reducer.py</file>
+        </streaming>
         <ok to="job2"/>
         <error to="fail"/>
     </action>
 
     <!-- Job 2: Taxi Time Analysis -->
     <action name="job2">
-        <map-reduce>
+        <streaming>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -42,20 +40,18 @@
                     <value>${outputDir}/job2</value>
                 </property>
             </configuration>
-            <streaming>
-                <mapper>avg_taxi_time_mapper.py</mapper>
-                <reducer>avg_taxi_time_reducer.py</reducer>
-                <file>${dataRoot}/mapred/avg_taxi_time_mapper.py</file>
-                <file>${dataRoot}/mapred/avg_taxi_time_reducer.py</file>
-            </streaming>
-        </map-reduce>
+            <mapper>avg_taxi_time_mapper.py</mapper>
+            <reducer>avg_taxi_time_reducer.py</reducer>
+            <file>${dataRoot}/mapred/avg_taxi_time_mapper.py</file>
+            <file>${dataRoot}/mapred/avg_taxi_time_reducer.py</file>
+        </streaming>
         <ok to="job3"/>
         <error to="fail"/>
     </action>
 
     <!-- Job 3: Cancellation Reasons -->
     <action name="job3">
-        <map-reduce>
+        <streaming>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -68,13 +64,11 @@
                     <value>${outputDir}/job3</value>
                 </property>
             </configuration>
-            <streaming>
-                <mapper>reason_cancel_mapper.py</mapper>
-                <reducer>reason_cancel_reducer.py</reducer>
-                <file>${dataRoot}/mapred/reason_cancel_mapper.py</file>
-                <file>${dataRoot}/mapred/reason_cancel_reducer.py</file>
-            </streaming>
-        </map-reduce>
+            <mapper>reason_cancel_mapper.py</mapper>
+            <reducer>reason_cancel_reducer.py</reducer>
+            <file>${dataRoot}/mapred/reason_cancel_mapper.py</file>
+            <file>${dataRoot}/mapred/reason_cancel_reducer.py</file>
+        </streaming>
         <ok to="end"/>
         <error to="fail"/>
     </action>
