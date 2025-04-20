@@ -7,8 +7,8 @@
 
 # PART 2 ==> COPY MAPRED AND CONFIG TO HDFS
 # Define the local directories for configuration files and scripts
-CONFIG_DIR="./config"
-SCRIPTS_DIR="./mapred"
+CONFIG_DIR="/tmp/config"
+SCRIPTS_DIR="/tmp/mapred"
 
 # Define the HDFS destination directories
 HDFS_CONFIG_DIR="/user/airline_data/config"
@@ -17,6 +17,10 @@ HDFS_SCRIPTS_DIR="/user/airline_data/mapred"
 # Create the HDFS directories if they don't exist
 sudo -u hdfs hdfs dfs -mkdir -p $HDFS_CONFIG_DIR
 sudo -u hdfs hdfs dfs -mkdir -p $HDFS_SCRIPTS_DIR
+
+#Moving config and mapred files tempararily to /tmp
+cp -R /home/ec2-user/Big-Data-Project/config /tmp
+cp -R /home/ec2-user/Big-Data-Project/mapred /tmp
 
 # Copy all config files to HDFS
 echo "Copying config files to HDFS..."
