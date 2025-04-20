@@ -3,7 +3,7 @@
 
     <!-- Job 1: On-time Performance -->
     <action name="job1">
-        <streaming>
+        <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -15,19 +15,47 @@
                     <name>mapred.output.dir</name>
                     <value>${outputDir}/job1</value>
                 </property>
+                <property>
+                    <name>mapreduce.job.reduces</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>mapreduce.framework.name</name>
+                    <value>yarn</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.map.class</name>
+                    <value>org.apache.hadoop.streaming.PipeMapper</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.reduce.class</name>
+                    <value>org.apache.hadoop.streaming.PipeReducer</value>
+                </property>
+                <property>
+                    <name>stream.map.streamprocessor</name>
+                    <value>avg_on_time_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.reduce.streamprocessor</name>
+                    <value>avg_on_time_reducer.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.01</name>
+                    <value>${dataRoot}/mapred/avg_on_time_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.02</name>
+                    <value>${dataRoot}/mapred/avg_on_time_reducer.py</value>
+                </property>
             </configuration>
-            <mapper>avg_on_time_mapper.py</mapper>
-            <reducer>avg_on_time_reducer.py</reducer>
-            <file>${dataRoot}/mapred/avg_on_time_mapper.py</file>
-            <file>${dataRoot}/mapred/avg_on_time_reducer.py</file>
-        </streaming>
+        </map-reduce>
         <ok to="job2"/>
         <error to="fail"/>
     </action>
 
     <!-- Job 2: Taxi Time Analysis -->
     <action name="job2">
-        <streaming>
+        <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -39,19 +67,47 @@
                     <name>mapred.output.dir</name>
                     <value>${outputDir}/job2</value>
                 </property>
+                <property>
+                    <name>mapreduce.job.reduces</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>mapreduce.framework.name</name>
+                    <value>yarn</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.map.class</name>
+                    <value>org.apache.hadoop.streaming.PipeMapper</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.reduce.class</name>
+                    <value>org.apache.hadoop.streaming.PipeReducer</value>
+                </property>
+                <property>
+                    <name>stream.map.streamprocessor</name>
+                    <value>avg_taxi_time_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.reduce.streamprocessor</name>
+                    <value>avg_taxi_time_reducer.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.01</name>
+                    <value>${dataRoot}/mapred/avg_taxi_time_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.02</name>
+                    <value>${dataRoot}/mapred/avg_taxi_time_reducer.py</value>
+                </property>
             </configuration>
-            <mapper>avg_taxi_time_mapper.py</mapper>
-            <reducer>avg_taxi_time_reducer.py</reducer>
-            <file>${dataRoot}/mapred/avg_taxi_time_mapper.py</file>
-            <file>${dataRoot}/mapred/avg_taxi_time_reducer.py</file>
-        </streaming>
+        </map-reduce>
         <ok to="job3"/>
         <error to="fail"/>
     </action>
 
     <!-- Job 3: Cancellation Reasons -->
     <action name="job3">
-        <streaming>
+        <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <configuration>
@@ -63,12 +119,40 @@
                     <name>mapred.output.dir</name>
                     <value>${outputDir}/job3</value>
                 </property>
+                <property>
+                    <name>mapreduce.job.reduces</name>
+                    <value>1</value>
+                </property>
+                <property>
+                    <name>mapreduce.framework.name</name>
+                    <value>yarn</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.map.class</name>
+                    <value>org.apache.hadoop.streaming.PipeMapper</value>
+                </property>
+                <property>
+                    <name>mapreduce.job.reduce.class</name>
+                    <value>org.apache.hadoop.streaming.PipeReducer</value>
+                </property>
+                <property>
+                    <name>stream.map.streamprocessor</name>
+                    <value>reason_cancel_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.reduce.streamprocessor</name>
+                    <value>reason_cancel_reducer.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.01</name>
+                    <value>${dataRoot}/mapred/reason_cancel_mapper.py</value>
+                </property>
+                <property>
+                    <name>stream.addfile.02</name>
+                    <value>${dataRoot}/mapred/reason_cancel_reducer.py</value>
+                </property>
             </configuration>
-            <mapper>reason_cancel_mapper.py</mapper>
-            <reducer>reason_cancel_reducer.py</reducer>
-            <file>${dataRoot}/mapred/reason_cancel_mapper.py</file>
-            <file>${dataRoot}/mapred/reason_cancel_reducer.py</file>
-        </streaming>
+        </map-reduce>
         <ok to="end"/>
         <error to="fail"/>
     </action>
