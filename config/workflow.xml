@@ -6,6 +6,9 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <prepare>
+                <delete path="${nameNode}/user/${outputRoot}/job1"/>
+            </prepare>
             <streaming>
                 <mapper>avg_on_time_mapper.py</mapper>
                 <reducer>avg_on_time_reducer.py</reducer>
@@ -32,6 +35,9 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <prepare>
+                <delete path="${nameNode}/user/${outputRoot}/job2"/>
+            </prepare>
             <streaming>
                 <mapper>avg_taxi_time_mapper.py</mapper>
                 <reducer>avg_taxi_time_reducer.py</reducer>
@@ -58,6 +64,9 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <prepare>
+                <delete path="${nameNode}/user/${outputRoot}/job3"/>
+            </prepare>
             <streaming>
                 <mapper>reason_cancel_mapper.py</mapper>
                 <reducer>reason_cancel_reducer.py</reducer>
