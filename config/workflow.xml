@@ -6,6 +6,10 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <streaming>
+                <mapper>avg_on_time_mapper.py</mapper>
+                <reducer>avg_on_time_reducer.py</reducer>
+            </streaming>
             <configuration>
                 <property>
                     <name>mapred.input.dir</name>
@@ -18,10 +22,6 @@
             </configuration>
             <file>${dataRoot}/mapred/avg_on_time_mapper.py</file>
             <file>${dataRoot}/mapred/avg_on_time_reducer.py</file>
-            <streaming>
-                <mapper>avg_on_time_mapper.py</mapper>
-                <reducer>avg_on_time_reducer.py</reducer>
-            </streaming>
         </map-reduce>
         <ok to="job2"/>
         <error to="fail"/>
@@ -32,6 +32,10 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <streaming>
+                <mapper>avg_taxi_time_mapper.py</mapper>
+                <reducer>avg_taxi_time_reducer.py</reducer>
+            </streaming>
             <configuration>
                 <property>
                     <name>mapred.input.dir</name>
@@ -44,10 +48,6 @@
             </configuration>
             <file>${dataRoot}/mapred/avg_taxi_time_mapper.py</file>
             <file>${dataRoot}/mapred/avg_taxi_time_reducer.py</file>
-            <streaming>
-                <mapper>avg_taxi_time_mapper.py</mapper>
-                <reducer>avg_taxi_time_reducer.py</reducer>
-            </streaming>
         </map-reduce>
         <ok to="job3"/>
         <error to="fail"/>
@@ -58,6 +58,10 @@
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <streaming>
+                <mapper>reason_cancel_mapper.py</mapper>
+                <reducer>reason_cancel_reducer.py</reducer>
+            </streaming>
             <configuration>
                 <property>
                     <name>mapred.input.dir</name>
@@ -70,10 +74,6 @@
             </configuration>
             <file>${dataRoot}/mapred/reason_cancel_mapper.py</file>
             <file>${dataRoot}/mapred/reason_cancel_reducer.py</file>
-            <streaming>
-                <mapper>reason_cancel_mapper.py</mapper>
-                <reducer>reason_cancel_reducer.py</reducer>
-            </streaming>
         </map-reduce>
         <ok to="end"/>
         <error to="fail"/>
