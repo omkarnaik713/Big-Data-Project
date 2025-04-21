@@ -18,10 +18,12 @@ avg_taxi_times = [(airport, total / count) for airport, (total, count) in taxi_t
 # Sort to get top 3 longest and shortest average taxi time
 avg_taxi_times.sort(key=lambda x: x[1])
 
-print("=== 3 Airports with Shortest Average Taxi Time ===")
+print("highest")
+for airport, avg in avg_taxi_times[-3:][::-1]:
+    print(f"{airport}\t{avg:.2f}")
+
+print("lowest")
 for airport, avg in avg_taxi_times[:3]:
     print(f"{airport}\t{avg:.2f}")
 
-print("\n=== 3 Airports with Longest Average Taxi Time ===")
-for airport, avg in avg_taxi_times[-3:][::-1]:
-    print(f"{airport}\t{avg:.2f}")
+
