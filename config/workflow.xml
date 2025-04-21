@@ -59,7 +59,7 @@
         <error to="fail"/>
     </action>
 
-    <!-- Job 3: Cancellation Reasons -->
+    <!-- Job 3: Flight Cancellation -->
     <action name="job3">
         <map-reduce>
             <job-tracker>${jobTracker}</job-tracker>
