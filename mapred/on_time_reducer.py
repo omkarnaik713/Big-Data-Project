@@ -16,8 +16,11 @@ for carrier, (total, on_time) in counts.items():
     results.append((carrier, prob))
 
 results.sort(key=lambda x: x[1])
-
-for carrier, prob in results[:3]:
-    print(f"Lowest: {carrier}\t{prob:.3f}")
+print('highest')
 for carrier, prob in results[-3:]:
-    print(f"Highest: {carrier}\t{prob:.3f}")
+    print(f"{carrier}\t{prob:.3f}")
+
+print('lowest')
+for carrier, prob in results[:3]:
+    print(f"{carrier}\t{prob:.3f}")
+
